@@ -1,6 +1,4 @@
-import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import 'app_logo.dart';
 
 class CovidAppBar extends StatelessWidget implements PreferredSizeWidget {

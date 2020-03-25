@@ -6,4 +6,6 @@ class AppStrings {
   static final String sempton = 'Sempton';
   static final String anasayfa = 'Anasayfa';
   static final String dunya = 'Dünya';
+
+  static final String pageHome = "/home";
 }
