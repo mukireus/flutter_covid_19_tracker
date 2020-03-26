@@ -1,11 +1,10 @@
-import 'dart:convert';
-
-import 'package:covid_19_tracker_in_flutter/models/global_data.dart';
-import 'package:covid_19_tracker_in_flutter/services/covid_19_api.dart';
+import 'package:covid_19_tracker_in_flutter/services/covid_api.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
+import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/app_bar.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/app_bottombar.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/globe_status.dart';
+import 'package:covid_19_tracker_in_flutter/ui/widgets/turkey_status.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -15,18 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  GlobalData test;
-
   @override
   void initState() {
-    getGlobalData().then((response) {
-      test = GlobalData.fromJson(json.decode(response.data));
-      setState(() {
-        debugPrint('ui updated');
-        print(response.data);
-        print(response);
-      });
-    });
     super.initState();
   }
 
@@ -42,18 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             GlobeStatus(),
-            FlatButton(
-              color: AppColors.colorGreen,
-              child: Text("Test"),
-              onPressed: () async {
-                print("test");
-                getGlobalData();
+            InkWell(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, AppStrings.pageTurkeyDetails);
               },
+              child: TurkeyStatus(),
             ),
-            Text("Aktif Vaka" + test.activeCases.toString()),
-            Text("Ölüm" + test.totalDeaths.toString()),
-            Text("İyileşen" + test.totalRecovered.toString()),
-            Text("Vaka" + test.totalCases.toString()),
+            //Text("Aktif Vaka" + test.activeCases.toString()),
+            //Text("Ölüm" + test.totalDeaths.toString()),
+            //Text("İyileşen" + test.totalRecovered.toString()),
+            //Text("Vaka" + test.totalCases.toString()),
           ],
         ),
       ),
@@ -64,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var dio = Dio();
     createHttpRequestConfig(dio);
     Response response;
-    await dio.get(CovidAPI.url).then((resp) {
+    await dio.get(CovidAPI.baseUrl).then((resp) {
       response = resp;
     });
     return response;
