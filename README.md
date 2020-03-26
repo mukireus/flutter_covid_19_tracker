@@ -10,7 +10,7 @@ This app was made for training. For arrangements and development ideas, please c
 # UI Design
 Made with **Adobe XD**.
 
-![UI](https://github.com/mukireus/flutter_covid_19_tracker/blob/master/assets/covid_19.gif)
+![UI](https://github.com/mukireus/flutter_covid_19_tracker/blob/master/assets/ui.gif)
 
 
 
