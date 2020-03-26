@@ -35,12 +35,7 @@ class _TurkeyStatusState extends State<TurkeyStatus> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
-              child: CasesRow(
-                totalActiveCases: 1828,
-                totalCases: 1872,
-                totalDeaths: 44,
-                totalRecovered: 26,
-              ),
+              child: CasesRow(totalActiveCases: 2348, totalCases: 2433, totalDeaths: 59, totalRecovered: 26),
             )
           ],
         ),
