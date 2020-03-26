@@ -39,21 +39,21 @@ class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
               ),
               automaticallyImplyLeading: true,
               leading: IconButton(
-                  icon: FaIcon(
-                    FontAwesomeIcons.chevronLeft,
-                    color: Colors.white,
-                  ),
+                  icon: FaIcon(FontAwesomeIcons.chevronLeft, color: Colors.white),
                   onPressed: () => Navigator.pushReplacementNamed(context, AppStrings.pageHome)),
             ),
-            SliverPersistentHeader(
-              delegate: _SliverAppBarDelegate(
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    TurkeyStatus(),
-                  ],
-                ),
+            SliverPadding(
+              padding: new EdgeInsets.all(16.0),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      TurkeyStatus(),
+                    ],
+                  ),
+                ]),
               ),
             ),
           ];
@@ -67,26 +67,4 @@ class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
 
   TextStyle get _sliverAppBarTitleStyle => GoogleFonts.openSans(
       fontWeight: FontWeight.bold, color: Colors.white, shadows: <Shadow>[Shadow(offset: Offset(1.0, 1.0), blurRadius: 3.0, color: Colors.black)]);
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate(this._column);
-
-  final Column _column;
-  @override
-  double get minExtent => 121;
-  @override
-  double get maxExtent => 150;
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new Container(
-      child: _column,
-    );
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
-  }
 }
