@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 class TurkeyDetailsScreen extends StatefulWidget {
   @override
   _TurkeyDetailsScreenState createState() => _TurkeyDetailsScreenState();
-}
+} 
 
 class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
   final String imageUrl = "https://source.unsplash.com/1920x1080/?istanbul";
