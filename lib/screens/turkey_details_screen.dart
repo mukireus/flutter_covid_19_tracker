@@ -1,7 +1,5 @@
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
-import 'package:covid_19_tracker_in_flutter/ui/widgets/app_bottombar.dart';
-import 'package:covid_19_tracker_in_flutter/ui/widgets/turkey_status.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 class TurkeyDetailsScreen extends StatefulWidget {
   @override
   _TurkeyDetailsScreenState createState() => _TurkeyDetailsScreenState();
-} 
+}
 
 class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
   final String imageUrl = "https://source.unsplash.com/1920x1080/?istanbul";
@@ -17,7 +15,6 @@ class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.colorLight,
-      bottomNavigationBar: AppBottomNavigationBar(),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -50,7 +47,7 @@ class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      TurkeyStatus(),
+                     // TurkeyStatus(),
                     ],
                   ),
                 ]),

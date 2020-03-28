@@ -1,14 +1,33 @@
-import 'package:covid_19_tracker_in_flutter/ui/widgets/cases_row.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:covid_19_tracker_in_flutter/models/result.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
+import 'package:covid_19_tracker_in_flutter/ui/widgets/cases_row.dart';
 
-class GlobeStatus extends StatelessWidget {
+class GlobeStatus extends StatefulWidget {
+  final Result result;
+
+  const GlobeStatus({
+    Key key,
+    @required this.result,
+  }) : super(key: key);
+
+  @override
+  _GlobeStatusState createState() => _GlobeStatusState();
+}
+
+class _GlobeStatusState extends State<GlobeStatus> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .15,
+      height: MediaQuery.of(context).size.height * .17,
       width: MediaQuery.of(context).size.width * .9,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -31,10 +50,10 @@ class GlobeStatus extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: CasesRow(
-                totalActiveCases: 123,
-                totalCases: 123,
-                totalDeaths: 4324,
-                totalRecovered: 123,
+                totalActiveCases: widget.result.totalActiveCases,
+                totalCases: widget.result.totalCases,
+                totalDeaths: widget.result.totalDeaths,
+                totalRecovered: widget.result.totalRecovered,
               ),
             )
           ],

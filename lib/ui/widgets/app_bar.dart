@@ -10,16 +10,11 @@ class CovidAppBar extends StatelessWidget implements PreferredSizeWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(50)),
-          boxShadow: [
-            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
-          ],
+          boxShadow: [BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10)],
         ),
         child: Align(
           alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: AppLogo(),
-          ),
+          child: Padding(padding: const EdgeInsets.only(bottom: 20.0), child: AppLogo()),
         ),
       ),
     );
