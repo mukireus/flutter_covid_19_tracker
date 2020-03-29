@@ -23,10 +23,10 @@ class AppStrings {
   static final String pageTurkeyDetails = "/turkeyDetails";
 
   static final String animationTemperatureMeter = "assets/animations/temperaturemeter.json";
-  static final String animationWash = "assets/animations/wash.json";
   static final String animationHand = "assets/animations/hand.json";
   static final String animationHands = "assets/animations/hands.json";
   static final String animationMask = "assets/animations/mask.json";
   static final String animationSneezing = "assets/animations/sneezing.json";
-  static final String animationBreath = "assets/animations/breath.json";
+
+  static final String logo = "assets/logo.png";
 }

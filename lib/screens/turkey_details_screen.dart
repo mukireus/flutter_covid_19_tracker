@@ -37,7 +37,7 @@ class _TurkeyDetailsScreenState extends State<TurkeyDetailsScreen> {
               automaticallyImplyLeading: true,
               leading: IconButton(
                   icon: FaIcon(FontAwesomeIcons.chevronLeft, color: Colors.white),
-                  onPressed: () => Navigator.pushReplacementNamed(context, AppStrings.pageHome)),
+                  onPressed: () => Navigator.pushReplacementNamed(context, AppStrings.pageHomeNavigator)),
             ),
             SliverPadding(
               padding: new EdgeInsets.all(16.0),

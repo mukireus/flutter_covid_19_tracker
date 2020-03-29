@@ -26,13 +26,13 @@ class _SemptonScreenState extends State<SemptonScreen> {
                 _header(AppStrings.semptonlar),
                 SemptonContainer(header: AppStrings.semptom1, animationPath: AppStrings.animationTemperatureMeter),
                 SemptonContainer(header: AppStrings.semptom2, animationPath: AppStrings.animationSneezing),
-                SemptonContainer(header: AppStrings.semptom3, animationPath: AppStrings.animationBreath),
+                SemptonContainer(header: AppStrings.semptom3, animationPath: AppStrings.animationSneezing),
               ],
             ),
             Column(
               children: <Widget>[
                 _header(AppStrings.tavsiyeler),
-                SemptonContainer(header: AppStrings.tavsiye1, animationPath: AppStrings.animationWash),
+                SemptonContainer(header: AppStrings.tavsiye1, animationPath: AppStrings.animationHand),
                 SemptonContainer(header: AppStrings.tavsiye2, animationPath: AppStrings.animationHand),
                 SemptonContainer(header: AppStrings.tavsiye3, animationPath: AppStrings.animationHands),
                 SemptonContainer(header: AppStrings.tavsiye4, animationPath: AppStrings.animationMask),
