@@ -10,12 +10,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Result _result;
-  List<CountryResult> _countryResult;
-  int turkeyTotalRecovered;
-  int turkeyTotalActiveCases;
-  int turkeyTotalDeaths;
-  int turkeyTotalCases;
+  Result _result = new Result();
+  List<CountryResult> _countryResult = [];
+  int turkeyTotalRecovered = 0;
+  int turkeyTotalActiveCases = 0;
+  int turkeyTotalDeaths = 0;
+  int turkeyTotalCases = 0;
 
   @override
   void initState() {
