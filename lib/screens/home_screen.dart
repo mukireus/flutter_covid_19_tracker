@@ -1,8 +1,10 @@
+import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/globe_status.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/turkey_status.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_19_tracker_in_flutter/models/result.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -49,25 +51,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          GlobeStatus(result: _result),
-          InkWell(
-            onTap: () {
-              Navigator.pushReplacementNamed(context, AppStrings.pageTurkeyDetails);
-            },
-            child: TurkeyStatus(
-              totalActiveCases: turkeyTotalActiveCases,
-              totalCases: turkeyTotalCases,
-              totalDeaths: turkeyTotalDeaths,
-              totalRecovered: turkeyTotalRecovered,
+    return _countryResult.isEmpty
+        ? Center(
+            child: Padding(
+              padding: const EdgeInsets.all(60.0),
+              child: LoadingIndicator(
+                indicatorType: Indicator.ballScaleMultiple,
+                color: AppColors.colorDarkRed,
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          )
+        : Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                GlobeStatus(result: _result),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, AppStrings.pageTurkeyDetails);
+                  },
+                  child: TurkeyStatus(
+                    totalActiveCases: turkeyTotalActiveCases,
+                    totalCases: turkeyTotalCases,
+                    totalDeaths: turkeyTotalDeaths,
+                    totalRecovered: turkeyTotalRecovered,
+                  ),
+                ),
+              ],
+            ),
+          );
   }
 }

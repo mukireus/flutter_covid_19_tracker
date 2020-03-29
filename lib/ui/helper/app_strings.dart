@@ -16,6 +16,7 @@ class AppStrings {
   static final String tavsiye2 = 'Dışarıdan getirdiğiniz nesneleri dezenfekte ediniz.';
   static final String tavsiye3 = 'Tokalașma, sarılma gibi yakın temaslardan kaçının.';
   static final String tavsiye4 = 'Soğuk algınlığı belirtileriniz varsa maske takmadan dıșarı çıkmayın.';
+  static final String ulkeEkle = 'Ülke Ekle';
 
   static final String pageHome = "/home";
   static final String pageHomeNavigator = "/homeNavigator";

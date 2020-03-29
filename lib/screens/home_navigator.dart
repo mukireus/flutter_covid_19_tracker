@@ -1,4 +1,5 @@
 import 'package:covid_19_tracker_in_flutter/screens/home_screen.dart';
+import 'package:covid_19_tracker_in_flutter/screens/world_screen.dart';
 import 'package:covid_19_tracker_in_flutter/screens/sempton_screen.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
@@ -15,7 +16,7 @@ class HomeNavigator extends StatefulWidget {
 
 class _HomeNavigatorState extends State<HomeNavigator> {
   int _currentIndex = 1;
-  List<Widget> _pages = [SemptonScreen(), HomeScreen(), SemptonScreen()];
+  List<Widget> _pages = [SemptonScreen(), HomeScreen(), WorldScreen()];
 
   @override
   Widget build(BuildContext context) {
