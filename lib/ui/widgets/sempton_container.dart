@@ -39,8 +39,10 @@ class _SemptonContainerState extends State<SemptonContainer> {
               Text(widget.header, style: _secondaryStyle, textAlign: TextAlign.center),
               Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: Lottie.asset(widget.animationPath,
-                    height: MediaQuery.of(context).size.height * .10, width: MediaQuery.of(context).size.width * .16, fit: BoxFit.fill),
+                child: Expanded(
+                  child: Lottie.asset(widget.animationPath,
+                      height: MediaQuery.of(context).size.height * .10, width: MediaQuery.of(context).size.width * .16, fit: BoxFit.fill),
+                ),
               ),
             ],
           ),
