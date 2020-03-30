@@ -1,5 +1,5 @@
 name: covid_19_tracker_in_flutter
-description: A new Flutter project.
+description: Anlık olarak Covid-19 sayılarını takip edebilirsiniz.
 
 version: 1.0.0+1
 
@@ -23,6 +23,13 @@ dev_dependencies:
     sdk: flutter
 
   flutter_native_splash: ^0.1.9
+  flutter_launcher_icons: "^0.7.3"
+
+
+flutter_icons:
+  android: true 
+  ios: true
+  image_path: "assets/app_logo.png"
 
 flutter_native_splash:
   image: assets/logo.png
