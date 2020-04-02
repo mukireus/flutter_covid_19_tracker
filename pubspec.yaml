@@ -17,6 +17,7 @@ dependencies:
   lottie: ^0.3.2
   loading_indicator: ^1.1.0
   flutter_typeahead: ^1.8.0
+  pull_to_refresh: ^1.5.7
 
 dev_dependencies:
   flutter_test:

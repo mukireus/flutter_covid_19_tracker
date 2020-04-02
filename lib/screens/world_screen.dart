@@ -1,6 +1,7 @@
 import 'package:covid_19_tracker_in_flutter/models/result.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
+import 'package:covid_19_tracker_in_flutter/ui/widgets/country_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:font_awesome_flutter/fa_icon.dart';
@@ -14,20 +15,43 @@ class WorldScreen extends StatefulWidget {
 
 class _WorldScreenState extends State<WorldScreen> {
   final TextEditingController _typeAheadController = TextEditingController();
-
   List<CountryResult> countryResult = [];
   String _selectedCountry = "";
-  @override
-  void initState() {
-    getData();
-    super.initState();
-  }
+
+  List<Widget> widgetList = [];
+  int _widgetSayac = 0;
 
   void getData() async {
     List<CountryResult> _countryTemp = await getAllCountriesData();
     setState(() {
       countryResult = _countryTemp;
     });
+  }
+
+  void addCountry() {
+    int _totalRecovered, _totalActiveCases, _totalDeaths, _totalCases;
+    String _countryName;
+    _widgetSayac++;
+    countryResult.forEach((element) {
+      if ((element.countryName) == _selectedCountry) {
+        _totalRecovered = element.totalRecovered;
+        _totalActiveCases = element.totalActiveCases;
+        _totalDeaths = element.totalDeaths;
+        _totalCases = element.totalCases;
+        _countryName = element.countryName;
+      }
+    });
+    widgetList.add(Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      child: CountryStatus(
+        totalRecovered: _totalRecovered,
+        totalActiveCases: _totalActiveCases,
+        totalDeaths: _totalDeaths,
+        totalCases: _totalCases,
+        countryName: _countryName,
+      ),
+    ));
+    _typeAheadController.text = "";
   }
 
   @override
@@ -42,7 +66,12 @@ class _WorldScreenState extends State<WorldScreen> {
         child: FaIcon(FontAwesomeIcons.plus),
         backgroundColor: AppColors.colorDarkBlue,
       ),
-      body: Column(children: <Widget>[]),
+      body: ListView.builder(
+        itemCount: _widgetSayac,
+        itemBuilder: (context, int index) {
+          return widgetList[index];
+        },
+      ),
     );
   }
 
@@ -72,35 +101,19 @@ class _WorldScreenState extends State<WorldScreen> {
                   children: <Widget>[
                     TypeAheadFormField(
                       getImmediateSuggestions: true,
-                      itemBuilder: (context, suggestion) {
-                        return Card(
-                          child: ListTile(
-                            // TODO Bayrak iconları ekle
-                            //leading: Icon(Icons.shopping_cart),
-                            title: Text(suggestion),
-                          ),
-                        );
-                      },
+                      itemBuilder: (context, suggestion) => Card(child: ListTile(title: Text(suggestion))),
                       onSuggestionSelected: (suggestion) {
                         this._typeAheadController.text = suggestion;
                         this._selectedCountry = suggestion;
                       },
-                      errorBuilder: (context, Object error) {
-                        return Text("Ülke Bulunamadı");
-                      },
+                      errorBuilder: (context, Object error) => Text("Ülke Bulunamadı"),
                       noItemsFoundBuilder: (context) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Text(
-                            "Ülke Bulunamadı",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Theme.of(context).disabledColor, fontSize: 18.0),
-                          ),
+                          child: Text("Ülke Bulunamadı", textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).disabledColor, fontSize: 18.0)),
                         );
                       },
-                      suggestionsCallback: (pattern) {
-                        return getSuggestions(pattern);
-                      },
+                      suggestionsCallback: (pattern) => getSuggestions(pattern),
                       textFieldConfiguration: TextFieldConfiguration(
                         controller: this._typeAheadController,
                         cursorColor: AppColors.colorDarkBlue,
@@ -113,11 +126,6 @@ class _WorldScreenState extends State<WorldScreen> {
                           hintText: 'Ülkeni ara',
                         ),
                       ),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'Ülkeni ara';
-                        }
-                      },
                       onSaved: (value) => this._selectedCountry = value,
                     ),
                     Spacer(),
@@ -126,7 +134,7 @@ class _WorldScreenState extends State<WorldScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         FlatButton(
-                            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
+                            shape: _buttonStyle,
                             child: Text("İptal", style: _dialogButtonTextStyle(AppColors.colorPrimary)),
                             onPressed: () {
                               Navigator.pop(context);
@@ -134,12 +142,10 @@ class _WorldScreenState extends State<WorldScreen> {
                             }),
                         FlatButton(
                           color: AppColors.colorBlue,
-                          shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
+                          shape: _buttonStyle,
                           child: Text("Ekle", style: _dialogButtonTextStyle(AppColors.colorDarkBlue)),
                           onPressed: () {
-                            print(_selectedCountry);
-                            _typeAheadController.text = "";
-                            Navigator.pop(context);
+                            if (_typeAheadController.text != "") addCountry();
                           },
                         ),
                       ],
@@ -154,4 +160,5 @@ class _WorldScreenState extends State<WorldScreen> {
 
   TextStyle get _dialogHeaderTextStyle => GoogleFonts.openSans(color: AppColors.colorDarkBlue, fontWeight: FontWeight.bold, fontSize: 19);
   TextStyle _dialogButtonTextStyle(Color _color) => GoogleFonts.openSans(color: _color, fontWeight: FontWeight.bold, fontSize: 11);
+  RoundedRectangleBorder get _buttonStyle => RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0));
 }
