@@ -21,5 +21,6 @@ https://github.com/NovelCOVID/API
 
 # UI Design
 Made with **Adobe XD**.
+[Design Dribbble](https://dribbble.com/shots/10881824-Covid-19-Tracker)
 
 ![UI](https://github.com/mukireus/flutter_covid_19_tracker/blob/master/assets/ui.gif)
