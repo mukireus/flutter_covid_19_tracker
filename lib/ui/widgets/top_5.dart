@@ -34,12 +34,40 @@ class _TopContainerState extends State<TopContainer> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(padding: const EdgeInsets.only(left: 20.0), child: Text(AppStrings.kureselDurumilk5, style: _headerTextStyle)),
-              _casesRowIcons,
-              _countryStatus(0),
-              _countryStatus(1),
-              _countryStatus(2),
-              _countryStatus(3),
-              _countryStatus(4),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Table(
+                  children: <TableRow>[
+                    TableRow(children: [
+                      TableCell(
+                        child: Container(
+                          height: MediaQuery.of(context).size.height / 19,
+                        ),
+                      ),
+                      TableCell(
+                        child: Container(
+                            height: MediaQuery.of(context).size.height / 19,
+                            child: Center(child: _casesRow(FontAwesomeIcons.procedures, AppColors.colorDarkBlue))),
+                      ),
+                      TableCell(
+                        child: Container(
+                            height: MediaQuery.of(context).size.height / 19,
+                            child: Center(child: _casesRow(FontAwesomeIcons.procedures, AppColors.colorDarkRed))),
+                      ),
+                      TableCell(
+                        child: Container(
+                            height: MediaQuery.of(context).size.height / 19,
+                            child: Center(child: _casesRow(Icons.add_box, AppColors.colorGreen))),
+                      ),
+                    ]),
+                    _countryStatusCell(0),
+                    _countryStatusCell(1),
+                    _countryStatusCell(2),
+                    _countryStatusCell(3),
+                    _countryStatusCell(4),
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -80,10 +108,60 @@ class _TopContainerState extends State<TopContainer> {
     );
   }
 
+  TableRow _countryStatusCell(int index) {
+    return TableRow(children: <Widget>[
+      TableCell(
+        child: Container(
+            padding: EdgeInsets.only(left: 20.0),
+            alignment: Alignment.centerLeft,
+            height: MediaQuery.of(context).size.height / 19,
+            child: Text((widget.countryList[index].countryName), style: _countryNameTextStyle)),
+        verticalAlignment: TableCellVerticalAlignment.middle,
+      ),
+      TableCell(
+          child: Container(
+            alignment: Alignment.center,
+            height: MediaQuery.of(context).size.height / 19,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(widget.countryList[index].totalCases.toString(), style: _countryCaseTextStyle(AppColors.colorDarkBlue)),
+                Text("Vakaa", style: _countryCaseInfoTextStyle(AppColors.colorDarkBlue))
+              ],
+            ),
+          )),
+      TableCell(
+          child: Container(
+            alignment: Alignment.center,
+            height: MediaQuery.of(context).size.height / 19,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(widget.countryList[index].totalDeaths.toString(), style: _countryCaseTextStyle(AppColors.colorDarkRed)),
+                Text("Ölüm", style: _countryCaseInfoTextStyle(AppColors.colorDarkRed))
+              ],
+            ),
+          )),
+      TableCell(
+          child: Container(
+            alignment: Alignment.center,
+            height: MediaQuery.of(context).size.height / 19,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(widget.countryList[index].totalRecovered.toString(), style: _countryCaseTextStyle(AppColors.colorGreen)),
+                Text("İyileşen", style: _countryCaseInfoTextStyle(AppColors.colorGreen))
+              ],
+            ),
+          )),
+    ]);
+  }
+
   BoxDecoration get _containerBoxDecoration => BoxDecoration(
       color: Colors.white, borderRadius: BorderRadius.circular(20), boxShadow: [BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 8)]);
   TextStyle get _headerTextStyle => GoogleFonts.openSans(color: AppColors.colorDarkBlue, letterSpacing: 0.68, fontWeight: FontWeight.w700, fontSize: 14);
   TextStyle get _countryNameTextStyle => GoogleFonts.openSans(color: AppColors.colorDarkRed, fontSize: 16, fontWeight: FontWeight.bold);
   TextStyle _countryCaseTextStyle(Color _color) => GoogleFonts.openSans(color: _color, fontSize: 14, fontWeight: FontWeight.bold);
+  TextStyle _countryCaseInfoTextStyle(Color _color) => GoogleFonts.openSans(color: _color, fontSize: 10, fontWeight: FontWeight.w600);
   Widget _casesRow(IconData _icon, Color _color) => FaIcon(_icon, size: 20, color: _color);
 }
