@@ -1,3 +1,4 @@
+import 'package:covid_19_tracker_in_flutter/screens/country_details_screen.dart';
 import 'package:covid_19_tracker_in_flutter/screens/home_navigator.dart';
 import 'package:covid_19_tracker_in_flutter/screens/sempton_screen.dart';
 import 'package:covid_19_tracker_in_flutter/screens/turkey_details_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         AppStrings.pageHome: (context) => HomeScreen(),
         AppStrings.pageTurkeyDetails: (context) => TurkeyDetailsScreen(),
         AppStrings.pageSempton: (context) => SemptonScreen(),
+        AppStrings.pageCountryDetails: (context) => CountryDetailsScreen(),
       },
     );
   }

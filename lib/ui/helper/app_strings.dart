@@ -17,11 +17,16 @@ class AppStrings {
   static final String tavsiye3 = 'Tokalașma, sarılma gibi yakın temaslardan kaçının.';
   static final String tavsiye4 = 'Soğuk algınlığı belirtileriniz varsa maske takmadan dıșarı çıkmayın.';
   static final String ulkeEkle = 'Ülke Ekle';
+  static final String vaka = 'Vaka';
+  static final String vefat = 'Vefat';
+  static final String iyilesen = 'İyileşen';
+  static final String aktifVaka = 'Aktif Vaka';
 
   static final String pageHome = "/home";
   static final String pageHomeNavigator = "/homeNavigator";
   static final String pageSempton = "/sempton";
   static final String pageTurkeyDetails = "/turkeyDetails";
+  static final String pageCountryDetails = "/countryDetails";
 
   static final String animationTemperatureMeter = "assets/animations/temperaturemeter.json";
   static final String animationHand = "assets/animations/hand.json";

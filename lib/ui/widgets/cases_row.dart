@@ -1,4 +1,5 @@
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
+import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,7 @@ class CasesRow extends StatelessWidget {
           children: <Widget>[
             FaIcon(FontAwesomeIcons.procedures, size: 20, color: AppColors.colorDarkBlue),
             Text(totalCases.toString(), style: GoogleFonts.openSans(color: AppColors.colorDarkBlue, fontWeight: FontWeight.w800, fontSize: 17)),
-            Text("Vaka", style: GoogleFonts.openSans(color: AppColors.colorDarkBlue, fontWeight: FontWeight.w700, fontSize: 14)),
+            Text(AppStrings.vaka, style: GoogleFonts.openSans(color: AppColors.colorDarkBlue, fontWeight: FontWeight.w700, fontSize: 14)),
           ],
         ),
         Column(
@@ -37,7 +38,7 @@ class CasesRow extends StatelessWidget {
           children: <Widget>[
             FaIcon(FontAwesomeIcons.procedures, size: 20, color: AppColors.colorDarkRed),
             Text(totalDeaths.toString(), style: GoogleFonts.openSans(color: AppColors.colorDarkRed, fontWeight: FontWeight.w800, fontSize: 17)),
-            Text("Ölüm", style: GoogleFonts.openSans(color: AppColors.colorDarkRed, fontWeight: FontWeight.w700, fontSize: 14)),
+            Text(AppStrings.vefat, style: GoogleFonts.openSans(color: AppColors.colorDarkRed, fontWeight: FontWeight.w700, fontSize: 14)),
           ],
         ),
         Column(
@@ -46,7 +47,7 @@ class CasesRow extends StatelessWidget {
           children: <Widget>[
             Icon(Icons.add_box, size: 20, color: AppColors.colorGreen),
             Text(totalRecovered.toString(), style: GoogleFonts.openSans(color: AppColors.colorGreen, fontWeight: FontWeight.w800, fontSize: 17)),
-            Text("İyileşen", style: GoogleFonts.openSans(color: AppColors.colorGreen, fontWeight: FontWeight.w700, fontSize: 14)),
+            Text(AppStrings.iyilesen, style: GoogleFonts.openSans(color: AppColors.colorGreen, fontWeight: FontWeight.w700, fontSize: 14)),
           ],
         ),
         Column(
@@ -55,7 +56,7 @@ class CasesRow extends StatelessWidget {
           children: <Widget>[
             FaIcon(FontAwesomeIcons.procedures, size: 20, color: AppColors.colorPrimary),
             Text(totalActiveCases.toString(), style: GoogleFonts.openSans(color: AppColors.colorPrimary, fontWeight: FontWeight.w800, fontSize: 17)),
-            Text("Aktif Vaka", style: GoogleFonts.openSans(color: AppColors.colorPrimary, fontWeight: FontWeight.w700, fontSize: 14)),
+            Text(AppStrings.aktifVaka, style: GoogleFonts.openSans(color: AppColors.colorPrimary, fontWeight: FontWeight.w700, fontSize: 14)),
           ],
         )
       ],

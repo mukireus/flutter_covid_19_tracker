@@ -60,11 +60,11 @@ class _TopContainerState extends State<TopContainer> {
                             child: Center(child: _casesRow(Icons.add_box, AppColors.colorGreen))),
                       ),
                     ]),
-                    _countryStatusCell(0),
                     _countryStatusCell(1),
                     _countryStatusCell(2),
                     _countryStatusCell(3),
                     _countryStatusCell(4),
+                    _countryStatusCell(5),
                   ],
                 ),
               )
@@ -126,7 +126,7 @@ class _TopContainerState extends State<TopContainer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(widget.countryList[index].totalCases.toString(), style: _countryCaseTextStyle(AppColors.colorDarkBlue)),
-                Text("Vakaa", style: _countryCaseInfoTextStyle(AppColors.colorDarkBlue))
+                Text(AppStrings.vaka, style: _countryCaseInfoTextStyle(AppColors.colorDarkBlue))
               ],
             ),
           )),
@@ -138,7 +138,7 @@ class _TopContainerState extends State<TopContainer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(widget.countryList[index].totalDeaths.toString(), style: _countryCaseTextStyle(AppColors.colorDarkRed)),
-                Text("Ölüm", style: _countryCaseInfoTextStyle(AppColors.colorDarkRed))
+                Text(AppStrings.vefat, style: _countryCaseInfoTextStyle(AppColors.colorDarkRed))
               ],
             ),
           )),
@@ -150,7 +150,7 @@ class _TopContainerState extends State<TopContainer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(widget.countryList[index].totalRecovered.toString(), style: _countryCaseTextStyle(AppColors.colorGreen)),
-                Text("İyileşen", style: _countryCaseInfoTextStyle(AppColors.colorGreen))
+                Text(AppStrings.iyilesen, style: _countryCaseInfoTextStyle(AppColors.colorGreen))
               ],
             ),
           )),
