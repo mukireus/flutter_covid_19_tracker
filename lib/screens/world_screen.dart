@@ -1,12 +1,13 @@
 import 'package:covid_19_tracker_in_flutter/models/result.dart';
+import 'package:covid_19_tracker_in_flutter/state/world_state.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/country_status.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:font_awesome_flutter/fa_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class WorldScreen extends StatefulWidget {
   @override
@@ -17,9 +18,9 @@ class _WorldScreenState extends State<WorldScreen> {
   final TextEditingController _typeAheadController = TextEditingController();
   List<CountryResult> countryResult = [];
   String _selectedCountry = "";
-
   List<Widget> widgetList = [];
   int _widgetSayac = 0;
+  int index = 0;
 
   void getData() async {
     List<CountryResult> _countryTemp = await getAllCountriesData();
@@ -41,37 +42,47 @@ class _WorldScreenState extends State<WorldScreen> {
         _countryName = element.countryName;
       }
     });
-    widgetList.add(Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: CountryStatus(
-        totalRecovered: _totalRecovered,
-        totalActiveCases: _totalActiveCases,
-        totalDeaths: _totalDeaths,
-        totalCases: _totalCases,
-        countryName: _countryName,
+    widgetList.add(
+      Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: InkWell(
+          onTap: () => Navigator.pushReplacementNamed(context, AppStrings.pageCountryDetails, arguments: {"countryResults": countryResult[index]}),
+          child: CountryStatus(
+            totalRecovered: _totalRecovered,
+            totalActiveCases: _totalActiveCases,
+            totalDeaths: _totalDeaths,
+            totalCases: _totalCases,
+            countryName: _countryName,
+          ),
+        ),
       ),
-    ));
+    );
     _typeAheadController.text = "";
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          getData();
-          _showSelectCountry(countryResult);
-        },
-        tooltip: AppStrings.ulkeEkle,
-        child: FaIcon(FontAwesomeIcons.plus),
-        backgroundColor: AppColors.colorDarkBlue,
+    return MultiProvider(
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            getData();
+            _showSelectCountry(countryResult);
+          },
+          tooltip: AppStrings.ulkeEkle,
+          child: FaIcon(FontAwesomeIcons.plus),
+          backgroundColor: AppColors.colorDarkBlue,
+        ),
+        body: ListView.builder(
+          itemCount: _widgetSayac,
+          itemBuilder: (context, int index) {
+            return widgetList[index];
+          },
+        ),
       ),
-      body: ListView.builder(
-        itemCount: _widgetSayac,
-        itemBuilder: (context, int index) {
-          return widgetList[index];
-        },
-      ),
+      providers: [
+        ChangeNotifierProvider<ChangeNotifier>(create: (context) => WorldState()),
+      ],
     );
   }
 
@@ -80,7 +91,7 @@ class _WorldScreenState extends State<WorldScreen> {
     countryResult.forEach((element) {
       countries.add(element.countryName);
     });
-    countries.sort();
+    //countries.sort();
     countries.retainWhere((element) => element.toLowerCase().contains(query.toLowerCase()));
     return countries;
   }

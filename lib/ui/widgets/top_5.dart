@@ -22,9 +22,9 @@ class _TopContainerState extends State<TopContainer> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Container(
-        height: MediaQuery.of(context).size.height * .45,
+        height: MediaQuery.of(context).size.height * .40,
         width: MediaQuery.of(context).size.width * .9,
         decoration: _containerBoxDecoration,
         child: Padding(
@@ -55,55 +55,20 @@ class _TopContainerState extends State<TopContainer> {
                             child: Center(child: _casesRow(FontAwesomeIcons.procedures, AppColors.colorDarkRed))),
                       ),
                       TableCell(
-                        child: Container(
-                            height: MediaQuery.of(context).size.height / 19,
-                            child: Center(child: _casesRow(Icons.add_box, AppColors.colorGreen))),
+                        child: Container(height: MediaQuery.of(context).size.height / 19, child: Center(child: _casesRow(Icons.add_box, AppColors.colorGreen))),
                       ),
                     ]),
+                    _countryStatusCell(0),
                     _countryStatusCell(1),
                     _countryStatusCell(2),
                     _countryStatusCell(3),
                     _countryStatusCell(4),
-                    _countryStatusCell(5),
                   ],
                 ),
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget get _casesRowIcons {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          SizedBox(width: MediaQuery.of(context).size.width * .15),
-          _casesRow(FontAwesomeIcons.procedures, AppColors.colorDarkBlue),
-          _casesRow(FontAwesomeIcons.procedures, AppColors.colorDarkRed),
-          _casesRow(Icons.add_box, AppColors.colorGreen),
-        ],
-      ),
-    );
-  }
-
-  Widget _countryStatus(int index) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text((widget.countryList[index].countryName), style: _countryNameTextStyle),
-          SizedBox(),
-          Text(widget.countryList[index].totalCases.toString(), style: _countryCaseTextStyle(AppColors.colorDarkBlue)),
-          Text(widget.countryList[index].totalDeaths.toString(), style: _countryCaseTextStyle(AppColors.colorDarkRed)),
-          Text(widget.countryList[index].totalRecovered.toString(), style: _countryCaseTextStyle(AppColors.colorGreen)),
-        ],
       ),
     );
   }
@@ -120,40 +85,40 @@ class _TopContainerState extends State<TopContainer> {
       ),
       TableCell(
           child: Container(
-            alignment: Alignment.center,
-            height: MediaQuery.of(context).size.height / 19,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(widget.countryList[index].totalCases.toString(), style: _countryCaseTextStyle(AppColors.colorDarkBlue)),
-                Text(AppStrings.vaka, style: _countryCaseInfoTextStyle(AppColors.colorDarkBlue))
-              ],
-            ),
-          )),
+        alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height / 19,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(widget.countryList[index].totalCases.toString(), style: _countryCaseTextStyle(AppColors.colorDarkBlue)),
+            Text(AppStrings.vaka, style: _countryCaseInfoTextStyle(AppColors.colorDarkBlue))
+          ],
+        ),
+      )),
       TableCell(
           child: Container(
-            alignment: Alignment.center,
-            height: MediaQuery.of(context).size.height / 19,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(widget.countryList[index].totalDeaths.toString(), style: _countryCaseTextStyle(AppColors.colorDarkRed)),
-                Text(AppStrings.vefat, style: _countryCaseInfoTextStyle(AppColors.colorDarkRed))
-              ],
-            ),
-          )),
+        alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height / 19,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(widget.countryList[index].totalDeaths.toString(), style: _countryCaseTextStyle(AppColors.colorDarkRed)),
+            Text(AppStrings.vefat, style: _countryCaseInfoTextStyle(AppColors.colorDarkRed))
+          ],
+        ),
+      )),
       TableCell(
           child: Container(
-            alignment: Alignment.center,
-            height: MediaQuery.of(context).size.height / 19,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(widget.countryList[index].totalRecovered.toString(), style: _countryCaseTextStyle(AppColors.colorGreen)),
-                Text(AppStrings.iyilesen, style: _countryCaseInfoTextStyle(AppColors.colorGreen))
-              ],
-            ),
-          )),
+        alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height / 19,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(widget.countryList[index].totalRecovered.toString(), style: _countryCaseTextStyle(AppColors.colorGreen)),
+            Text(AppStrings.iyilesen, style: _countryCaseInfoTextStyle(AppColors.colorGreen))
+          ],
+        ),
+      )),
     ]);
   }
 

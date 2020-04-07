@@ -88,13 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: InkWell(
-                  onTap: () => Navigator.pushReplacementNamed(
-                    context,
-                    AppStrings.pageCountryDetails,
-                    arguments: {
-                      
-                    },
-                  ),
+                  onTap: () => Navigator.pushReplacementNamed(context, AppStrings.pageCountryDetails, arguments: {"countryResults": _countryResult[3]}),
                   child: CountryStatus(
                     countryName: _countryName,
                     totalActiveCases: turkeyTotalActiveCases,
