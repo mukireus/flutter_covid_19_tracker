@@ -32,18 +32,27 @@ class _SemptonContainerState extends State<SemptonContainer> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(11),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(widget.header, style: _secondaryStyle, textAlign: TextAlign.center),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Expanded(
-                  child: Lottie.asset(widget.animationPath,
-                      height: MediaQuery.of(context).size.height * .10, width: MediaQuery.of(context).size.width * .16, fit: BoxFit.fill),
-                ),
+          child: Table(
+            children: <TableRow>[
+              TableRow(
+                children: [
+                  TableCell(child: Text(widget.header, style: _secondaryStyle, textAlign: TextAlign.center)),
+                ],
               ),
+              TableRow(
+                children: [
+                  TableCell(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * .10,
+                      width: MediaQuery.of(context).size.width * .16,
+                      child: Expanded(
+                        child:
+                            Padding(padding: const EdgeInsets.only(top: 8.0), child: Center(child: Lottie.asset(widget.animationPath, fit: BoxFit.fitHeight))),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

@@ -21,20 +21,20 @@ class _SemptonScreenState extends State<SemptonScreen> {
           children: <Widget>[
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,  
               children: <Widget>[
                 _header(AppStrings.semptonlar),
                 SemptonContainer(header: AppStrings.semptom1, animationPath: AppStrings.animationTemperatureMeter),
                 SemptonContainer(header: AppStrings.semptom2, animationPath: AppStrings.animationSneezing),
-                SemptonContainer(header: AppStrings.semptom3, animationPath: AppStrings.animationSneezing),
+                SemptonContainer(header: AppStrings.semptom3, animationPath: AppStrings.animationHardSneezing),
               ],
             ),
             Column(
               children: <Widget>[
                 _header(AppStrings.tavsiyeler),
-                SemptonContainer(header: AppStrings.tavsiye1, animationPath: AppStrings.animationHand),
-                SemptonContainer(header: AppStrings.tavsiye2, animationPath: AppStrings.animationHand),
-                SemptonContainer(header: AppStrings.tavsiye3, animationPath: AppStrings.animationHands),
+                SemptonContainer(header: AppStrings.tavsiye1, animationPath: AppStrings.animationWashHands),
+                SemptonContainer(header: AppStrings.tavsiye2, animationPath: AppStrings.animationDezenfekt),
+                SemptonContainer(header: AppStrings.tavsiye3, animationPath: AppStrings.animationSocialDistancing),
                 SemptonContainer(header: AppStrings.tavsiye4, animationPath: AppStrings.animationMask),
               ],
             ),

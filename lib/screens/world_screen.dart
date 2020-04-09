@@ -1,5 +1,4 @@
 import 'package:covid_19_tracker_in_flutter/models/result.dart';
-import 'package:covid_19_tracker_in_flutter/state/world_state.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_colors.dart';
 import 'package:covid_19_tracker_in_flutter/ui/helper/app_strings.dart';
 import 'package:covid_19_tracker_in_flutter/ui/widgets/country_status.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class WorldScreen extends StatefulWidget {
   @override
@@ -62,27 +60,22 @@ class _WorldScreenState extends State<WorldScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            getData();
-            _showSelectCountry(countryResult);
-          },
-          tooltip: AppStrings.ulkeEkle,
-          child: FaIcon(FontAwesomeIcons.plus),
-          backgroundColor: AppColors.colorDarkBlue,
-        ),
-        body: ListView.builder(
-          itemCount: _widgetSayac,
-          itemBuilder: (context, int index) {
-            return widgetList[index];
-          },
-        ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          getData();
+          _showSelectCountry(countryResult);
+        },
+        tooltip: AppStrings.ulkeEkle,
+        child: FaIcon(FontAwesomeIcons.plus),
+        backgroundColor: AppColors.colorDarkBlue,
       ),
-      providers: [
-        ChangeNotifierProvider<ChangeNotifier>(create: (context) => WorldState()),
-      ],
+      body: ListView.builder(
+        itemCount: _widgetSayac,
+        itemBuilder: (context, int index) {
+          return widgetList[index];
+        },
+      ),
     );
   }
 
