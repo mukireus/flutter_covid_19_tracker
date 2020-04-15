@@ -28,16 +28,6 @@ class AppStrings {
   static final String pageTurkeyDetails = "/turkeyDetails";
   static final String pageCountryDetails = "/countryDetails";
 
-  // Animations
-  static final String animationTemperatureMeter = "assets/animations/temperaturemeter.json";
-  static final String animationHands = "assets/animations/hands.json";
-  static final String animationWashHands = "assets/animations/wash_hands.json";
-  static final String animationMask = "assets/animations/mask.json";
-  static final String animationSneezing = "assets/animations/sneezing.json";
-  static final String animationHardSneezing = "assets/animations/hard_sneezing.json";
-  static final String animationSocialDistancing = "assets/animations/social_distancing.json";
-  static final String animationDezenfekt = "assets/animations/dezenfekt.json";
-
 
   static final String logo = "assets/logo.png";
 }

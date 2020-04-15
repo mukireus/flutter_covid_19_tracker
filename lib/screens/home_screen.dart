@@ -36,6 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _result = _temp;
       _countryResult = _countryTemp;
+      // Sıralama
+      Comparator<CountryResult> comparator = (b, a) => a.totalCases.compareTo(b.totalCases);
+      _countryResult.sort(comparator);
       getTurkeyData();
     });
   }
@@ -88,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: InkWell(
-                  onTap: () => Navigator.pushReplacementNamed(context, AppStrings.pageCountryDetails, arguments: {"countryResults": _countryResult[3]}),
+                  onTap: () => Navigator.pushReplacementNamed(context, AppStrings.pageTurkeyDetails, arguments: {"countryResults": _countryResult[3]}),
                   child: CountryStatus(
                     countryName: _countryName,
                     totalActiveCases: turkeyTotalActiveCases,
