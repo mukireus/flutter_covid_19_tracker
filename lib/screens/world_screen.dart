@@ -31,40 +31,37 @@ class _WorldScreenState extends State<WorldScreen> {
     int _totalRecovered, _totalActiveCases, _totalDeaths, _totalCases, _index;
     String _countryName;
 
-    _widgetSayac++;
-    countryResult.asMap().forEach((index, element) {
-      if ((element.countryName) == _selectedCountry) {
-        _totalRecovered = element.totalRecovered;
-        _totalActiveCases = element.totalActiveCases;
-        _totalDeaths = element.totalDeaths;
-        _totalCases = element.totalCases;
-        _countryName = element.countryName;
-        _index = index;
-      }
-    });
-    widgetList.add(
-      Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: InkWell(
-          onTap: () => Navigator.pushReplacementNamed(context, AppStrings.pageCountryDetails, arguments: {"countryResults": countryResult[_index]}),
-          child: CountryStatus(
-            totalRecovered: _totalRecovered,
-            totalActiveCases: _totalActiveCases,
-            totalDeaths: _totalDeaths,
-            totalCases: _totalCases,
-            countryName: _countryName,
-          ),
-        ),
-      ),
-    );
-    _typeAheadController.text = "";
-    print("iNDEX" + _index.toString());
-    print("iNDEX" + _index.toString());
-    print("iNDEX" + _index.toString());
-    print("iNDEX" + _index.toString());
-    print("iNDEX" + _index.toString());
-    print("iNDEX" + _index.toString());
-    print("iNDEX" + _index.toString());
+    try {
+      countryResult.asMap().forEach((index, element) {
+        if ((element.countryName) == _selectedCountry) {
+          _totalRecovered = element.totalRecovered;
+          _totalActiveCases = element.totalActiveCases;
+          _totalDeaths = element.totalDeaths;
+          _totalCases = element.totalCases;
+          _countryName = element.countryName;
+          _index = index;
+          _widgetSayac++;
+          widgetList.add(
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: () => Navigator.pushReplacementNamed(context, AppStrings.pageCountryDetails, arguments: {"countryResults": countryResult[_index]}),
+                child: CountryStatus(
+                  totalRecovered: _totalRecovered,
+                  totalActiveCases: _totalActiveCases,
+                  totalDeaths: _totalDeaths,
+                  totalCases: _totalCases,
+                  countryName: _countryName,
+                ),
+              ),
+            ),
+          );
+          _typeAheadController.text = "";
+        }
+      });
+    } catch (e) {
+      print(e.error);
+    }
   }
 
   @override
@@ -158,7 +155,7 @@ class _WorldScreenState extends State<WorldScreen> {
                           shape: _buttonStyle,
                           child: Text("Ekle", style: _dialogButtonTextStyle(AppColors.colorDarkBlue)),
                           onPressed: () {
-                            if (_typeAheadController.text != "") addCountry();
+                            addCountry();
                             getData();
                           },
                         ),

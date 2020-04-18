@@ -18,6 +18,10 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
     ));
 
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return MaterialApp(
       title: AppStrings.appName,
       initialRoute: AppStrings.pageHomeNavigator,

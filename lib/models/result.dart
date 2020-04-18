@@ -39,7 +39,7 @@ Future<Result> getAllData() async {
   Result result;
 
   try {
-    Response response = await get(baseUrl + "all");
+    Response response = await get(baseUrl + "v2/all");
     Map info = jsonDecode(response.body);
     result = new Result(
       totalDeaths: info["deaths"],
@@ -57,7 +57,7 @@ Future<Result> getAllData() async {
 Future<List<CountryResult>> getAllCountriesData() async {
   List<CountryResult> country = [];
   try {
-    Response response = await get(baseUrl + "countries");
+    Response response = await get(baseUrl + "v2/countries");
     List data = jsonDecode(response.body);
     for (int i = 0; i < data.length; i++) {
       CountryResult _report = new CountryResult(
