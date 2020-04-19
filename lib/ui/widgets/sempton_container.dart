@@ -33,15 +33,14 @@ class _SemptonContainerState extends State<SemptonContainer> {
               TableRow(children: [TableCell(child: Text(widget.header, style: _secondaryStyle, textAlign: TextAlign.center))]),
               TableRow(children: [
                 TableCell(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .10,
-                    width: MediaQuery.of(context).size.width * .16,
-                    child: Expanded(
-                        child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0), child: Center(child: Lottie.network(widget.animationPath, fit: BoxFit.fitHeight)))),
+                  child: AspectRatio(
+                    aspectRatio: 2,
+                    child: Center(
+                      child: Lottie.network(widget.animationPath, fit: BoxFit.fitHeight),
+                    ),
                   ),
-                ),
-              ])
+                )
+              ]),
             ],
           ),
         ),
