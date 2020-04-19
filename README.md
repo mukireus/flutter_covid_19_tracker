@@ -1,3 +1,4 @@
+![Thumbnail](thumbnail.png)
 # Covid-19 Tracker
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/MIT) 
 [![Codemagic build status](https://api.codemagic.io/apps/5e7faa5a4b4d321cf7ea85fb/5e7faa5a4b4d321cf7ea85fa/status_badge.svg)](https://codemagic.io/apps/5e7faa5a4b4d321cf7ea85fb/5e7faa5a4b4d321cf7ea85fa/latest_build) 
